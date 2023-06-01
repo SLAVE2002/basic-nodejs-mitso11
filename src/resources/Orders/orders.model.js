@@ -1,18 +1,24 @@
-import { v4 as uuidv4 } from 'uuid';
+const { v4: uuid } = require('uuid');
 
-class order {
-  constructor({ id = uuidv4(), ordernumber = 'ordernumber', numbers = 'numbers', clientid = 'clientid', productid = '2344467' } = {}) {
+class Order {
+  constructor({
+    id = uuid(),
+    orderNumber = 0,
+    number = 0,
+    clientId = null,
+    productsId = null,
+  } = {}) {
     this.id = id;
-    this.ordernumber = ordernumber;
-    this.numbers = numbers;
-    this.clientid = clientid;
-    this.productid = productid;
+    this.orderNumber = orderNumber;
+    this.number = number;
+    this.clientId = clientId;
+    this.productsId = productsId;
   }
 
   static toResponse(order) {
-    const { id, ordernumber, numbers, clientid, productid} = order;
-    return { id, ordernumber, numbers, clientid, productid};
+    const { id, orderNumber, number, clientId, productsId } = order;
+    return { id, orderNumber, number, clientId, productsId };
   }
 }
 
-export default order;
+module.exports = Order;
