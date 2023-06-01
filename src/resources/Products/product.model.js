@@ -4,9 +4,9 @@ class Product {
   constructor({ 
     id = uuid(),
     name = 'cola',
-    price = '0',
-    ageOflssue= '02',
-    lifeTime = '34',
+    price = 0,
+    ageOflssue= null,
+    lifeTime = null,
   } = {}) {
     this.id = id;
     this.name = name;
