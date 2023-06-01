@@ -8,11 +8,17 @@ const getById = async (id) => Orders.find((order) => order.id === id);
 
 const createOrder = async ({
   id,
-
+  orderNumber, 
+  number, 
+  clientId, 
+  productsId,
 }) => {
   const order = new Order({
     id,
-
+    orderNumber, 
+    number, 
+    clientId, 
+    productsId,
   });
   Orders.push(order);
   return order;
@@ -31,7 +37,10 @@ const deleteById = async (id) => {
 
 const updateById = async ({
   id,
-
+  orderNumber, 
+  number, 
+  clientId, 
+  productsId,
 }) => {
   const OrderPosition = Orders.findIndex((order) => order.id === id);
 
@@ -40,7 +49,10 @@ const updateById = async ({
   const oldOrder = Orders[OrderPosition];
   const newOrder = {
     ...oldOrder,
-
+    orderNumber, 
+    number, 
+    clientId, 
+    productsId,
   };
 
   Orders.splice(OrderPosition, 1, newOrder);
