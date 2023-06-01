@@ -70,7 +70,7 @@ const removeClientById = async (id) => {
 const deleteByProductId = async (productsId) => {
   const productOrders = Orders.filter((order) => order.productsId === productsId);
 
-  await Promise.allSettled(orderProducts.map(async (order) => deleteById(order.id)));
+  await Promise.allSettled(productOrders.map(async (order) => deleteById(order.id)));
 };
 
 module.exports = {
