@@ -1,22 +1,29 @@
-const prosuctRepository = require('./product.memory.repository');
+const productRepository = require('./product.memory.repository');
+const OrderRepository = require('../Orders/orders.memory.repository');
 
-const getAll = () => prosuctRepository.getAll();
-const getById = (id) => prosuctRepository.getById(id);
-const createTask = ({
+const getAll = () => productRepository.getAll();
+const getById = (id) => productRepository.getById(id);
+const createProduct = ({
   id,
   name, 
   price, 
   ageOflssue, 
   lifeTime,
 }) =>
-prosuctRepository.createTask({
+productRepository.createProduct({
     id,
     name, 
     price, 
     ageOflssue, 
     lifeTime,
   });
-const deleteById = (id) => prosuctRepository.deleteById(id);
+const deleteById = async (id) => {
+  const productDeletable = await getById(id);
+  productRepository.deleteById(id);
+  OrderRepository.deleteByProductId(id);
+return productDeletable;
+}
+
 const updateById = ({
   id,
   name, 
@@ -24,7 +31,7 @@ const updateById = ({
   ageOflssue, 
   lifeTime,
 }) =>
-prosuctRepository.updateById({
+productRepository.updateById({
     id,
     name, 
     price, 
@@ -32,4 +39,4 @@ prosuctRepository.updateById({
     lifeTime,
   });
 
-module.exports = { getAll, getById, createTask, deleteById, updateById };
+module.exports = { getAll, getById, createProduct, deleteById, updateById };
