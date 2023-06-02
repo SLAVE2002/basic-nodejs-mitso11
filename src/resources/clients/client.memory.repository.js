@@ -1,5 +1,47 @@
-const getAll = async () =>
-  // TODO: mock implementation. should be replaced during task development
-  [];
+const Client = require('./client.model');
 
-export { getAll };
+const Clients = [
+  new Client({ name = 'CLIENT', adress = 'client', bonucecard = '5@35 5@34 4@97 @245', numberphone = 'number' }),
+];
+
+const getAll = async () => Clients;
+
+const getById = async (id) => Clients.find((client) => client.id === id);
+
+const createClient = async ({ name, adress, bonucecard, numberphone }) => {
+  const client = new Client({ name, adress, bonucecard, numberphone });
+  Clients.push(client);
+  return client;
+};
+
+const deleteById = async (id) => {
+  const clientPosition = Clients.findIndex((client) => client.id === id);
+
+  if (clientPosition === -1) return null;
+
+  const clientDeletable = Clients[clientPosition];
+
+  Clients.splice(clientPosition, 1);
+  return clientDeletable;
+};
+
+const updateById = async ({ name, adress, bonucecard, numberphone }) => {
+  const clientPosition = Clients.findIndex((client) => client.id === id);
+
+  if (clientPosition === -1) return null;
+
+  const oldClient = Clients[clientPosition];
+  const newClient = { ...oldClient, name, adress, bonucecard, numberphone };
+
+  Clients.splice(clientPosition, 1, newClient);
+  return newClient;
+};
+
+module.exports = {
+  Clients,
+  getAll,
+  getById,
+  createClient,
+  deleteById,
+  updateById,
+};
