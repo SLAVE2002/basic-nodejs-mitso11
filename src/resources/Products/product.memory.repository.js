@@ -1,7 +1,9 @@
 const Product = require('./product.model');
+
 const Products= [new Product()];
 const getAll = async () => Products;
-const getById = async (id) => Products.find((Products) => Products.id === id);
+
+const getById = async (id) => Products.find((products) => products.id === id);
 const createProduct = async ({
   id, 
   name, 
@@ -25,7 +27,7 @@ const deleteById = async (id) => {
 
   if (productPosition === -1) return null;
 
-  const productDeletable = Produtcs[productPosition];
+  const productDeletable = Products[productPosition];
 
   Products.splice(productPosition, 1);
   return productDeletable;

@@ -1,4 +1,5 @@
 const OrderRepository = require('./orders.memory.repository');
+const productRepository = require('../products/product.memory.repository');
 
 const getAll = () => OrderRepository.getAll();
 const getById = (id) => OrderRepository.getById(id);
@@ -16,7 +17,13 @@ OrderRepository.createOrder({
     clientId, 
     productsId,
   });
-const deleteById = (id) => OrderRepository.deleteById(id);
+const deleteById = async (id) => {
+  const boardDeletable = await getById(id);
+  OrderRepository.deleteById(id);
+  productRepository.deleteByProductId(id);
+
+  return boardDeletable;
+};
 const updateById = ({
   id,
   orderNumber, 

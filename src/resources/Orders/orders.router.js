@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const router = require('express').Router({ mergeParams: true });
+const router = require('express').Router();
 const Order = require('./orders.model');
 
 const ordersService = require('./orders.service');
@@ -16,7 +16,7 @@ router.route('/').get(
 router.route('/').post(
   catchErrors(async (req, res) => {
     const { productsId } = req.params;
-    const { id,  } = req.body;
+    const { id,  orderNumber, number, clientId } = req.body;
 
     const order = await ordersService.createOrder({
       id,
@@ -91,5 +91,4 @@ router.route('/:id').delete(
     }
   })
 );
-
 module.exports = router;

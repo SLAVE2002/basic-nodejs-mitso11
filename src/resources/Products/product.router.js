@@ -15,11 +15,14 @@ router.route('/').get(
 
 router.route('/').post(
   catchErrors(async (req, res) => {
-    const { id,  } = req.body;
+    const { id, name, price, ageOflssue, lifeTime } = req.body;
 
     const product = await ProductsService.createProduct({
       id,
-
+      name, 
+      price, 
+      ageOflssue, 
+      lifeTime,
     });
 
     if (product) {
@@ -50,10 +53,10 @@ router.route('/:id').get(
 router.route('/:id').put(
   catchErrors(async (req, res) => {
     const { id } = req.params;
-    const {  } = req.body;
+    const { name, price, ageOflssue, lifeTime } = req.body;
 
     const product = await ProductsService.updateById({
-      id,
+      id, name, price, ageOflssue, lifeTime
 
     });
 

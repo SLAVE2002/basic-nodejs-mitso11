@@ -1,29 +1,22 @@
 const productRepository = require('./product.memory.repository');
-const OrderRepository = require('../Orders/orders.memory.repository');
 
 const getAll = () => productRepository.getAll();
 const getById = (id) => productRepository.getById(id);
-const createProduct = ({
+const createTask = ({
   id,
   name, 
   price, 
   ageOflssue, 
   lifeTime,
 }) =>
-productRepository.createProduct({
+productRepository.createTask({
     id,
     name, 
     price, 
     ageOflssue, 
     lifeTime,
   });
-const deleteById = async (id) => {
-  const productDeletable = await getById(id);
-  productRepository.deleteById(id);
-  OrderRepository.deleteByProductId(id);
-return productDeletable;
-}
-
+const deleteById = (id) => productRepository.deleteById(id);
 const updateById = ({
   id,
   name, 
@@ -39,4 +32,4 @@ productRepository.updateById({
     lifeTime,
   });
 
-module.exports = { getAll, getById, createProduct, deleteById, updateById };
+module.exports = { getAll, getById, createTask, deleteById, updateById };

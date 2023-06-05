@@ -1,6 +1,7 @@
 const Order = require('./orders.model');
 
-const Orders = [new order()];
+
+const Orders = [new Order()];
 
 const getAll = async () => Orders;
 
@@ -24,6 +25,7 @@ const createOrder = async ({
   return order;
 };
 
+
 const deleteById = async (id) => {
   const OrderPosition = Orders.findIndex((order) => order.id === id);
 
@@ -34,7 +36,6 @@ const deleteById = async (id) => {
   Orders.splice(OrderPosition, 1);
   return orderDeletable;
 };
-
 const updateById = async ({
   id,
   orderNumber, 

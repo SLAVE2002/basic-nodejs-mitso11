@@ -1,7 +1,7 @@
 const Client = require('./client.model');
 
 const Clients = [
-  new Client({ name = 'CLIENT', adress = 'client', bonucecard = '5@35 5@34 4@97 @245', numberphone = 'number' }),
+  new Client({ name: 'CLIENT', adress: 'client', bonucecard: '5@35', numberphone: 'number' }),
 ];
 
 const getAll = async () => Clients;
@@ -25,7 +25,7 @@ const deleteById = async (id) => {
   return clientDeletable;
 };
 
-const updateById = async ({ name, adress, bonucecard, numberphone }) => {
+const updateById = async ({id, name, adress, bonucecard, numberphone }) => {
   const clientPosition = Clients.findIndex((client) => client.id === id);
 
   if (clientPosition === -1) return null;

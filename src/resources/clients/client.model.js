@@ -1,7 +1,12 @@
-import { v4 as uuidv4 } from 'uuid';
+const { v4: uuid } = require('uuid');
 
-class client {
-  constructor({ id = uuidv4(), name = 'CLIENT', adress = 'client', bonucecard = '5@35 5@34 4@97 @245',numberphone = 'number' } = {}) {
+class Client {
+  constructor({ id = uuid(), 
+    name = 'CLIENT', 
+    adress = 'client',
+    bonucecard = '5@35',
+    numberphone = 'number' 
+  } = {}) {
     this.id = id;
     this.name = name;
     this.adress = adress;
@@ -15,4 +20,5 @@ class client {
   }
 }
 
-export default client;
+
+module.exports = Client;
