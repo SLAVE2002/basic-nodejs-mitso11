@@ -23,6 +23,6 @@ app.use('/', (req, res, next) => {
 
 app.use('/clients', clientsRouter);
 app.use('/Orders', orderRouter);
-// app.use('/Orders/:productsId/products', taskRouter);
+app.use('/Orders/:productsId/products', taskRouter);
 
 module.exports = app;
